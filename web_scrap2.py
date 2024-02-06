@@ -9,16 +9,20 @@ ctx.verify_mode = ssl.CERT_NONE
 count = int(input("Enter Count: "))
 position = int(input("Enter Position: "))
 
-url = "http://py4e-data.dr-chuck.net/known_by_Fikret.html"
-html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, 'html.parser')
-tags=soup("a")
+
 
 # Retrieve all of the anchor tags
 known_list=[]
+url = input("Enter URL: ")
 for i in range(count):
-    known_list.append(tags[position].contents[0])
+    
+    html = urllib.request.urlopen(url, context=ctx).read()
+    soup = BeautifulSoup(html, 'html.parser')
+    tags=soup("a")
+    url=tags[position-1].get("href", None)
+    print(url)
+    known_list.append(tags[position-1].contents[0])
 
 
-print(known_list)
+print(known_list[-1])
 
