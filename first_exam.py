@@ -97,3 +97,21 @@ print(count_developers([
           { 'firstName': 'Oliver', 'lastName': 'Q.', 'country': 'Australia', 'continent': 'Oceania', 'age': 19, 'language': 'HTML' },
           { 'firstName': 'Lukas', 'lastName': 'R.', 'country': 'Austria', 'continent': 'Europe', 'age': 89, 'language': 'HTML' }
         ]))
+
+# Matrix Creation
+def get_matrix(n):
+    matrix=[]
+    for i in range(n):
+        row=[]
+        for j in range(n):
+            if i==j:
+                row.append(1)
+            else:
+                row.append(0)
+        matrix.append(row)
+    return matrix
+    pass
+print(get_matrix(3))
+def some_not(seq, pred):
+     return any(pred(x) for x in seq) and not all(pred(x) for x in seq)
+print(some_not('abcdefg&%$', str.isalpha))
